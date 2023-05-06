@@ -9,6 +9,7 @@ namespace WashingCarDBJosue.DAL.Entities
         [ForeignKey("VehiculeId")]
         public virtual Vehicle Vehicle { get; set; }
         [Required]
+        [Display(Name = "Vehiculo")]
         public Guid VehiculeId { get; set; }
         
 

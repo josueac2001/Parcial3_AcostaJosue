@@ -9,6 +9,7 @@ namespace WashingCarDBJosue.DAL.Entities
         [ForeignKey("ServiceId")]
         public virtual Service Service { get; set; }
         [Required]
+        [Display(Name = "Servicio")]
         public Guid ServiceId { get; set; }
 
         [Display(Name = "Propietario")]
