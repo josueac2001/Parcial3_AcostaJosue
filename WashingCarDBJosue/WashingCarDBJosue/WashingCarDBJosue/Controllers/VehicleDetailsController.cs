@@ -59,13 +59,11 @@ namespace WashingCarDBJosue.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(VehicleDetails vehicleDetails)
         {
-            if (ModelState.IsValid)
-            {
-                vehicleDetails.Id = Guid.NewGuid();
-                _context.Add(vehicleDetails);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+            vehicleDetails.CreationDate = DateTime.Now;
+            vehicleDetails.Id = Guid.NewGuid();
+            _context.Add(vehicleDetails);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
             ViewData["VehiculeId"] = new SelectList(_context.Vehicles, "Id", "NumberPlate", vehicleDetails.VehiculeId);
             return View(vehicleDetails);
         }
