@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using WashingCarDBJosue.DAL;
 using WashingCarDBJosue.DAL.Entities;
 
@@ -22,7 +23,8 @@ namespace WashingCarDBJosue.Controllers
         // GET: VehicleDetails
         public async Task<IActionResult> Index()
         {
-            var databaseContext = _context.VehiclesDetails.Include(v => v.Vehicle);
+            var databaseContext = _context.VehiclesDetails.Include(v => v.Vehicle)
+                .ThenInclude(s => s.Service);
             return View(await databaseContext.ToListAsync());
         }
 
@@ -36,6 +38,7 @@ namespace WashingCarDBJosue.Controllers
 
             var vehicleDetails = await _context.VehiclesDetails
                 .Include(v => v.Vehicle)
+                .ThenInclude(s => s.Service)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (vehicleDetails == null)
             {

@@ -84,8 +84,6 @@ namespace WashingCarDBJosue.Controllers
         }
 
         // POST: Vehicles/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, Vehicle vehicle)
@@ -99,6 +97,18 @@ namespace WashingCarDBJosue.Controllers
             {
                 try
                 {
+                    // Buscar el objeto Service correspondiente al nombre seleccionado en el dropdownlist
+                    var service = await _context.Services.FirstOrDefaultAsync(s => s.Name == vehicle.Service.Name);
+                    if (service == null)
+                    {
+                        ModelState.AddModelError("Service.Name", "El servicio seleccionado no existe.");
+                        ViewData["ServiceId"] = new SelectList(_context.Services, "Name", "Name", vehicle.Service.Name);
+                        return View(vehicle);
+                    }
+
+                    // Actualizar el objeto Vehicle con el objeto Service encontrado
+                    vehicle.Service = service;
+
                     _context.Update(vehicle);
                     await _context.SaveChangesAsync();
                 }
@@ -115,7 +125,8 @@ namespace WashingCarDBJosue.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Name", vehicle.ServiceId);
+
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Name", "Name", vehicle.Service.Name);
             return View(vehicle);
         }
 
