@@ -48,7 +48,7 @@ namespace WashingCarDBJosue.Controllers
         // GET: Vehicles/Create
         public IActionResult Create()
         {
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id");
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id","Name");
             return View();
         }
 
@@ -66,7 +66,7 @@ namespace WashingCarDBJosue.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", vehicle.ServiceId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Name", vehicle.ServiceId);
             return View(vehicle);
         }
 
@@ -83,7 +83,7 @@ namespace WashingCarDBJosue.Controllers
             {
                 return NotFound();
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", vehicle.ServiceId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Name", vehicle.ServiceId);
             return View(vehicle);
         }
 
@@ -119,7 +119,7 @@ namespace WashingCarDBJosue.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Id", vehicle.ServiceId);
+            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Name", vehicle.ServiceId);
             return View(vehicle);
         }
 
