@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using WashingCarDBJosue.DAL.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics.Metrics;
-using WashingCarDBJosue.DAL.Entities;
 
 namespace WashingCarDBJosue.DAL
 {
@@ -9,6 +8,7 @@ namespace WashingCarDBJosue.DAL
     {
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
+
         }
 
         public DbSet<Service> Services { get; set; }

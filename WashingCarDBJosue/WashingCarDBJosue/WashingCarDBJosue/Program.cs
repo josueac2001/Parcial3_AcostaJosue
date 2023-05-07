@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WashingCarDBJosue.DAL;
 using WashingCarDBJosue.DAL.Entities;
+using WashingCarDBJosue.Helpers;
 using WashingCarDBJosue.Services;
 
 var builder = WebApplication.CreateBuilder(args);
