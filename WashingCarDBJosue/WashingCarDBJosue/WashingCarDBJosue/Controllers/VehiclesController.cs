@@ -6,8 +6,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using WashingCarDBJosue.DAL;
 using WashingCarDBJosue.DAL.Entities;
+using WashingCarDBJosue.Models;
 
 namespace WashingCarDBJosue.Controllers
 {
@@ -28,7 +30,7 @@ namespace WashingCarDBJosue.Controllers
         }
 
         [Authorize(Roles = "Client")]
-        // GET: Vehicles/Details/5
+        //GET: Vehicles/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.Vehicles == null)
@@ -46,6 +48,7 @@ namespace WashingCarDBJosue.Controllers
 
             return View(vehicle);
         }
+
 
         [Authorize(Roles = "Client")]
         // GET: Vehicles/Create
