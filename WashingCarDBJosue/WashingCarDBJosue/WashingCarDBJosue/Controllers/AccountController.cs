@@ -47,11 +47,11 @@ namespace WashingCarDBJosue.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //public IActionResult Unauthorized()
-        //{
-        //    return View();
-        //}
+        public IActionResult Unauthorized()
+        {
+            return View();
+        }
 
-        
+
     }
 }
