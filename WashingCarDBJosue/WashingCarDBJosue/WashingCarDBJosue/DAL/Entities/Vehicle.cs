@@ -7,10 +7,10 @@ namespace WashingCarDBJosue.DAL.Entities
     public class Vehicle : Entity
     {
         [ForeignKey("ServiceId")]
-        public virtual Service Service { get; set; }
+        public Service Service { get; set; }
         [Required]
         [Display(Name = "Servicio")]
-        public Guid ServiceId { get; set; }
+        public Guid  ServiceId { get; set; }
 
         [Display(Name = "Propietario")]
         [MaxLength(100, ErrorMessage = "El campo {0} debe ser de {1} caracteres.")]
