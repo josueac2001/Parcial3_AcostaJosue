@@ -27,6 +27,7 @@ namespace WashingCarDBJosue.Controllers
             return View(await databaseContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Client")]
         // GET: Vehicles/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
@@ -46,6 +47,7 @@ namespace WashingCarDBJosue.Controllers
             return View(vehicle);
         }
 
+        [Authorize(Roles = "Client")]
         // GET: Vehicles/Create
         public IActionResult Create()
         {
@@ -66,6 +68,7 @@ namespace WashingCarDBJosue.Controllers
             return View(vehicle);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: Vehicles/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {

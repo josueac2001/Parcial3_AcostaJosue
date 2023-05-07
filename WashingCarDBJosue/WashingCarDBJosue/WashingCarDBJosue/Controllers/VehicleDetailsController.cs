@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -48,6 +50,7 @@ namespace WashingCarDBJosue.Controllers
             return View(vehicleDetails);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: VehicleDetails/Create
         public IActionResult Create()
         {
@@ -71,6 +74,7 @@ namespace WashingCarDBJosue.Controllers
             return View(vehicleDetails);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: VehicleDetails/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
@@ -124,6 +128,7 @@ namespace WashingCarDBJosue.Controllers
             return View(vehicleDetails);
         }
 
+        [Authorize(Roles = "Admin")]
         // GET: VehicleDetails/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
