@@ -21,7 +21,7 @@ namespace WashingCarDBJosue.Controllers
         {
             _context = context;
         }
-
+        
         // GET: Vehicles
         public async Task<IActionResult> Index()
         {
